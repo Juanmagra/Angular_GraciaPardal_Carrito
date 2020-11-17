@@ -1,0 +1,9 @@
+<div  class="container">
+    <li *ngFor="let art of listaArticulos" class="card text-left col-md-3">
+      <img class="card-img-top" [src]='art.foto' alt="">
+      <div class="card-body">
+        <h4 class="card-title">{{art.nombre}}</h4>
+        <p class="card-text">{{art.descripcion}}</p>
+      </div>
+    </li>
+</div>
