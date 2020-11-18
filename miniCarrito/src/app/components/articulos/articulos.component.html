@@ -46,14 +46,15 @@
         <td>{{art.descripcion}}</td>
         <td>{{art.color}}</td>
         <td>{{art.talla}}</td>
-        <td>{{art.precio}}€<br>
-         Rebajado <span *ngIf="art.precioRebaja!=0" style="color: red;">{{art.precioRebaja}}€</span>
+        <td><span *ngIf="art.rebaja"><strike>{{art.precio}}€</strike></span><span *ngIf="!art.rebaja">{{art.precio}}€</span>  
+          <br>
+         <span *ngIf="art.rebaja">¡Rebajado!</span><span *ngIf="art.rebaja" style="color: red;">{{art.precioRebaja}}€</span>
         </td>
       </tr>      
     </tbody>
     <tfoot>
         <tr >
-          <td colspan="5"></td>
+          <td colspan="6"></td>
           <td>
            <strong>Total:</strong> {{total}}€
           </td>

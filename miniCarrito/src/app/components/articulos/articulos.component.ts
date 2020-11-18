@@ -8,16 +8,15 @@ import {Articulo} from '../../models/Articulo';
   styleUrls: ['./articulos.component.scss']
 })
 export class ArticulosComponent implements OnInit {
+
   listaArticulos:Array<Articulo>;
+
   total:number;
 
-
-
-  constructor() {
-  
-   }
+  constructor() { }
 
   ngOnInit(): void {
+
     this.listaArticulos=[
       new Articulo(0,"https://vimodatoledo.es/wp-content/uploads/2018/10/Botas-de-lluvia-altas-Hunter-original-verdes.jpg",
       "Botas altas", "Perfectas para la lluvia", "marron", 38,false,90,50),
@@ -40,8 +39,9 @@ export class ArticulosComponent implements OnInit {
       }
       this.total += precio;
     });
-
-
   }
+
+  
+
 
 }
