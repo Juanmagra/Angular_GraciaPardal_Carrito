@@ -9,9 +9,15 @@ import {Articulo} from '../../models/Articulo';
 })
 export class ArticulosComponent implements OnInit {
   listaArticulos:Array<Articulo>;
+  total:number;
+
 
 
   constructor() {
+  
+   }
+
+  ngOnInit(): void {
     this.listaArticulos=[
       new Articulo(0,"https://vimodatoledo.es/wp-content/uploads/2018/10/Botas-de-lluvia-altas-Hunter-original-verdes.jpg",
       "Botas altas", "Perfectas para la lluvia", "marron", 38,false,90,50),
@@ -23,10 +29,19 @@ export class ArticulosComponent implements OnInit {
       "Gorro de lana", "Manten la cabeza caliente", "negro", 10, false, 15,0),
     ];
 
-    console.log(this.listaArticulos);
-   }
+    this.total = 0;
 
-  ngOnInit(): void {
+    this.listaArticulos.forEach(art =>{
+      var precio:number;
+      if(art.rebaja){
+      precio= art.precioRebaja
+      }else{
+        precio=art.precio;
+      }
+      this.total += precio;
+    });
+
+
   }
 
 }

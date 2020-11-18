@@ -1,4 +1,12 @@
-<div  class="container">
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito</title>
+</head>
+<body>
+  <div  class="container">
     <li *ngFor="let art of listaArticulos" class="card text-left col-md-3">
       <img class="card-img-top" [src]='art.foto' alt="">
       <div class="card-body">
@@ -7,3 +15,55 @@
       </div>
     </li>
 </div>
+
+</body>
+</html>-->
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <span >
+     <span>{{listaArticulos.length}} producto(s) en el Carrito</span>
+  </span>
+</div>
+
+<div *ngIf="listaArticulos.length>0;else carritovaciotmpl">
+  <table class="table col-md-10 mx-auto">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Foto</th>
+        <th>Producto</th>
+        <th>Descripcion</th>
+        <th>Color</th>
+        <th>Talla</th>
+        <th>precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let art of listaArticulos">
+        <td>{{art.id}}</td>
+        <td><img [src]="art.foto" alt="" style="width: 50px; height: 50px;"></td>
+        <td>{{art.nombre}}</td>
+        <td>{{art.descripcion}}</td>
+        <td>{{art.color}}</td>
+        <td>{{art.talla}}</td>
+        <td>{{art.precio}}€<br>
+         Rebajado <span *ngIf="art.precioRebaja!=0" style="color: red;">{{art.precioRebaja}}€</span>
+        </td>
+      </tr>      
+    </tbody>
+    <tfoot>
+        <tr >
+          <td colspan="5"></td>
+          <td>
+           <strong>Total:</strong> {{total}}€
+          </td>
+        </tr>
+    </tfoot>
+  </table>
+</div>
+
+<ng-template #carritovaciotmpl>
+  <div >
+    <strong>El carrito esta vacío.</strong>
+  </div>
+</ng-template>
