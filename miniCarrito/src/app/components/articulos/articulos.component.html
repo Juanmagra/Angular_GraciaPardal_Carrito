@@ -35,6 +35,7 @@
         <th>Descripcion</th>
         <th>Color</th>
         <th>Talla</th>
+        <th>Cantidad</th>
         <th>precio</th>
       </tr>
     </thead>
@@ -46,11 +47,12 @@
         <td>{{art.descripcion}}</td>
         <td>{{art.color}}</td>
         <td>{{art.talla}}</td>
-        <td><span *ngIf="art.rebaja"><strike>{{art.precio}}€</strike></span><span *ngIf="!art.rebaja">{{art.precio}}€</span>  
+        <td><input min="1" type="number" value={{art.cantidad}} [(ngModel)]="art.cantidad" (change)="changes($event)"></td>
+        <td><span *ngIf="art.rebaja" style="text-decoration: line-through;">{{art.precio}}€</span><span *ngIf="!art.rebaja">{{art.precio}}€</span>
           <br>
          <span *ngIf="art.rebaja">¡Rebajado!</span><span *ngIf="art.rebaja" style="color: red;">{{art.precioRebaja}}€</span>
         </td>
-      </tr>      
+      </tr>
     </tbody>
     <tfoot>
         <tr >

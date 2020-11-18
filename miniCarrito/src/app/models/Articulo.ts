@@ -1,3 +1,5 @@
+import { OnChanges, SimpleChanges } from '@angular/core';
+
 export class Articulo{
 
     id:number;
@@ -6,11 +8,12 @@ export class Articulo{
     descripcion:string;
     color:string;
     talla:number;
+    cantidad:number;
     rebaja:boolean;
     precio:number;
     cantidadRebaja: number;
     precioRebaja: number;
-    
+
 
     constructor(id:number, foto:string,  nombre:string, descripcion:string,
     color:string, talla:number,rebaja:boolean, precio:number,
@@ -22,6 +25,7 @@ export class Articulo{
         this.color = color;
         this.talla = talla;
         this.rebaja = rebaja;
+        this.cantidad = 1;
         this.precio = precio;
         this.cantidadRebaja = cantidadRebaja;
         if(rebaja==true){
