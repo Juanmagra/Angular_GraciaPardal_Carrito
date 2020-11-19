@@ -9,6 +9,8 @@ import { Articulo } from '../../models/Articulo';
 })
 export class ArticulosComponent implements OnInit {
 
+  art:Articulo;
+
   listaArticulos: Array<Articulo>;
 
   cantidad: number;
@@ -51,6 +53,21 @@ new Articulo(0, 'https://vimodatoledo.es/wp-content/uploads/2018/10/Botas-de-llu
         this.total +=art.precio*art.cantidad;
       }
     });
+
+  }
+
+  eliminar( id:number):void{
+
+    this.listaArticulos.forEach(art =>{
+      let i = this.listaArticulos.indexOf(art);
+      if(art.id == id && i != -1){
+        this.listaArticulos.splice(i, 1);
+      }
+      this.changes(this.eliminar);
+
+    });
+
+
 
 
 
